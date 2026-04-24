@@ -107,8 +107,8 @@ Windows SmartScreen may display a warning ("Windows protected your PC") for file
 ### Troubleshooting
 
 - **"ERROR: This installer requires Administrator privileges"** — The `.cmd` was launched without admin elevation. Right-click → Run as administrator.
-- **"ERROR: start service: The service did not respond..."** — Ensure you are on agent `v0.5.1` or later. Older versions had a Windows service protocol bug. Re-download the `.cmd` from GestFlow to get the latest agent version.
-- **Badge stays orange after 60 seconds** — Check the Windows service `GestEaseAgent` is running (`Get-Service GestEaseAgent`). Check the `cloudflared` subprocess is alive (`Get-Process cloudflared`). If both are running but the badge is still orange, generate a new binding code in GestFlow and re-install (the previous Cloudflare tunnel may need to be refreshed).
+- **"ERROR: start service: The service did not respond..."** — Ensure you are on agent `v0.5.2` or later. Older versions had a Windows service protocol bug. Re-download the `.cmd` from GestFlow to get the latest agent version.
+- **Badge stays DOWN after install** — The agent pushes a heartbeat to GestFlow every 60 seconds (`v0.5.2`+). On first install, allow up to 60 seconds for the first beat. If still DOWN after that: check the Windows service `GestEaseAgent` is running (`Get-Service GestEaseAgent`), check the `cloudflared` subprocess is alive (`Get-Process cloudflared`). If both are running, generate a new binding code in GestFlow and re-install.
 
 ---
 
@@ -222,4 +222,4 @@ See [LICENSE](LICENSE) for the full license text. The binaries in this repositor
 
 ---
 
-*Last updated: 2026-04-24 — agent `v0.5.1` validated in production*
+*Last updated: 2026-04-24 — agent `v0.5.2` (heartbeat push model) validated in production*
